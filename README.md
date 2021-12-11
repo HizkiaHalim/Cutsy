@@ -1,4 +1,4 @@
-# Shorty
+# Cutsy
 
 This github repository was made for learning and not for commercial use.
 
