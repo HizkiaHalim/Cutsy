@@ -7,22 +7,51 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <title>Shorty</title>
 </head>
-<body>
-    <!-- Navbar-->
+<body style="height: 100vh;">
+    <!--Navbar-->
     <ul class="nav justify-content-center bg-info nav-fill" style="padding: 0.5em; padding-top: 1em;">
         <li class="nav-item">
-            <p style="padding: .5rem 1rem; margin-bottom: 0;">Shorty</p>
+            <p style="padding: .5rem 1rem; margin-bottom: 0; font-weight: 700; font-family: 'Yaldevi'; color: red;">Shorty</p>
         </li>
         <li class="nav-item">
           <a class="nav-link text-white" href="/">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white" href="#">About</a>
+          <a class="nav-link text-white" href="/about">About</a>
         </li>
         <li class="nav-item">
           <a class="nav-link text-white" href="https://github.com/HizkiaHalim/Shorty">Github</a>
         </li>
     </ul>
-    <p style="text-align: center; padding: 1.5em;">Shorten your Url with Shorty</p>
+    <!--Blabla-->
+    <p style="text-align: center; padding: 1.5em; font-family: 'Yaldevi'; font-size: 1.5em; font-weight: 700;">Shorten your url with <span style="color: red;">Shorty</span></p>
+    <!--Form-->
+    <form style="padding: 1em; font-family: 'Yaldevi';" method="POST" action="/shorting">
+      <div class="form-group">
+        <label for="longurl" style="margin-bottom: 1em; font-weight: 600;">Full Link</label>
+        <input name="longurl" type="url" class="form-control" id="longurl"  placeholder="Enter full link" required>
+        
+      </div>
+      <button type="submit" class="btn btn-info" style="margin-top: 1em;">Shorten</button>
+    </form>
+    <!--Table-->
+    <table class="table tbale-bordered">
+      <thead>
+        <tr class="table-primary">
+          <th>Full URL</th>
+          <th>ShortURL</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% urllist.forEach(db =>{ %> 
+          <tr>
+            <td><a href="<%= db.LONG_URL%>"><%= db.LONG_URL%></a></td>
+            <td><a href="<%= db.SHORT_URL%>"><%= db.SHORT_URL%></td>
+          </tr>
+          <% }) 
+        %>
+        
+      </tbody>
+    </table>
 </body>
 </html>
