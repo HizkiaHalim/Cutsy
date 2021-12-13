@@ -6,7 +6,8 @@ var shortydb = require('./model/skema')
 app.use(express.urlencoded({extended:false}))
 
 mongoose.connect("mongodb+srv://shortyadmin:awdqsezxc24@cluster0.n3q7q.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",{
-    useNewUrlParser:true , useUnifiedTopology:true
+    useNewUrlParser:true , 
+    useUnifiedTopology:true
 })
 
 app.set('view engine','ejs');
@@ -37,7 +38,7 @@ app.get('/:shurl', async(req,res)=>{
     }
 })
 
-app.listen(5500,(err)=>{
+app.listen(process.env.PORT || 5500,(err)=>{
     if (err) {
         console.log(err);
     }
